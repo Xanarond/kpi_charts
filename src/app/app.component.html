@@ -1,0 +1,21 @@
+<!--
+<nav class="navbar">
+    <h1>
+        <a [routerLink]="['/']">Angular Routing</a>
+    </h1>
+    <ul>
+        <li [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active">
+            <a [routerLink]="['/']">Home</a>
+        </li>
+        <li routerLinkActive="active"><a routerLink="/posts">Posts</a></li>
+        <li routerLinkActive="active"><a [routerLink]="['/about']">About</a></li>
+    </ul>
+</nav>
+-->
+
+    <div [@routeAnimations]="prepareRoute(outlet)">
+        <router-outlet #outlet="outlet"></router-outlet>
+    </div>
+
+
+
