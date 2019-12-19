@@ -1,23 +1,24 @@
 import {Component} from '@angular/core';
-import {RouterOutlet} from '@angular/router';
-import {slideInAnimation} from './animations';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
-    animations: [
-        slideInAnimation
-    ]
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
-
 export class AppComponent {
-    constructor() {
-    }
+  open = false;
+  drawerType = 'temporary';
+  headerType = 'spacer';
 
-    prepareRoute(outlet: RouterOutlet) {
-        return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
-    }
+  toggleDrawer() {
+    this.open = !this.open;
+  }
+
+  get toolbarSpacer() {
+    return this.headerType === 'spacer';
+  }
+
+  get toolbarHeader() {
+    return this.headerType === 'header';
+  }
 }
-
-

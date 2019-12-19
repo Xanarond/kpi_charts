@@ -1,21 +1,41 @@
-<!--
-<nav class="navbar">
-    <h1>
-        <a [routerLink]="['/']">Angular Routing</a>
-    </h1>
-    <ul>
-        <li [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active">
-            <a [routerLink]="['/']">Home</a>
-        </li>
-        <li routerLinkActive="active"><a routerLink="/posts">Posts</a></li>
-        <li routerLinkActive="active"><a [routerLink]="['/about']">About</a></li>
-    </ul>
-</nav>
--->
 
-    <div [@routeAnimations]="prepareRoute(outlet)">
-        <router-outlet #outlet="outlet"></router-outlet>
-    </div>
-
-
+<div #viewport class="blox-snippet-page animated fadeInDown">
+  <aside [mdcDrawerContainer]="drawerType" [(open)]="open">
+    <nav mdcDrawer>
+      <div mdcDrawerHeader>
+        <div mdcDrawerHeaderContent>All KPI</div>
+      </div>
+      <div mdcDrawerContent mdcListGroup>
+        <app-tree-menu></app-tree-menu>
+        <nav mdcList>
+          <li routerLinkActive="active"><a  mdcListItem routerLink="/" (click)="toggleDrawer()">Damage and return Monitoring</a></li>
+          <li routerLinkActive="active"><a  mdcListItem [routerLink]="['/over']" (click)="toggleDrawer()">Overtime Management</a></li>
+          <li routerLinkActive="active"><a  mdcListItem [routerLink]="['/costs']" (click)="toggleDrawer()">Costs</a></li>
+          <li routerLinkActive="active"><a  mdcListItem [routerLink]="['/stock']" (click)="toggleDrawer()">Stock Management</a></li>
+          <li routerLinkActive="active"><a  mdcListItem [routerLink]="['/tms']" (click)="toggleDrawer()">TMS Management System</a></li>
+          <li routerLinkActive="active"><a  mdcListItem [routerLink]="['/wh-tms']" (click)="toggleDrawer()">W/H and TMS KPI Management</a></li>
+          <li routerLinkActive="active"><a  mdcListItem [routerLink]="['/action-sams']" (click)="toggleDrawer()">Action Plan Samsung</a></li>
+          <li routerLinkActive="active"><a  mdcListItem [routerLink]="['/action-navien']" (click)="toggleDrawer()">Action Navien</a></li>
+        </nav>
+        <hr mdcListDivider>
+      </div>
+    </nav>
+  </aside>
+  <div class="blox-demo-content">
+    <header mdcTopAppBar [viewport]="viewport" [fixedAdjust]="content">
+      <div mdcTopAppBarRow>
+        <section mdcTopAppBarSection alignStart>
+          <button mdcTopAppBarNavIcon class="material-icons" (click)="toggleDrawer()">menu</button>
+        </section>
+        <section mdcTopAppBarSection alignEnd>
+          <a routerLinkActive="active" mdcListItem [routerLink]="['/settings']" mdcTopAppBarAction class="material-icons" label="Settings">settings_applications</a>
+          <a href="javascript:void(0)" mdcTopAppBarAction class="material-icons" label="Notifications">notifications</a>
+        </section>
+      </div>
+    </header>
+    <main #content class="blox-demo-main">
+        <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>
 
